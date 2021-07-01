@@ -81,13 +81,13 @@ fun main() {
         isFavorite = true,
         postponedId = 8
     )
+    val service = WallService()
+    val addPost = service.add(post)
+    val addPost2 = service.add(post2)
+    val addPost3 = service.add(post3)
 
-    val addPost = WallService().add(post)
-    val addPost2 = WallService().add(post2)
-    val addPost3 = WallService().add(post3)
+    println(service.update(addPost))
 
-    println(WallService().update(addPost))
-
-   WallService().printPost()
+    service.printPost()
 
 }
