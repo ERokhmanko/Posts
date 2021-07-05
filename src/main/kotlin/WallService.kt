@@ -16,6 +16,10 @@ class WallService {
         return false
     }
 
+    fun isRepost(post: Post) : Boolean {
+        return post.reposts.userReposted != null
+    }
+
     fun printPost() {
         for (post in posts)
             println(post)
