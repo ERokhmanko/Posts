@@ -17,7 +17,7 @@ class WallService {
     }
 
     fun isRepost(post: Post) : Boolean {
-        return post.reposts.userReposted != null
+        return post.reposts?.userReposted != null
     }
 
     fun printPost() {

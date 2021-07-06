@@ -7,7 +7,7 @@ class WallServiceTest {
 
     @Test
     fun addPost() {
-        val post: Post = Post(
+        val post = Post(
             ownerId = 2,
             fromId = 3,
             createdBy = 4,
@@ -27,7 +27,8 @@ class WallServiceTest {
             postponedId = 8,
             comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
             likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-            reposts = Reposts(count = 6, userReposted = null)
+            reposts = Reposts(count = 6, userReposted = null),
+            attachment = null
         )
 
         val result = WallService().add(post = post)
@@ -36,11 +37,11 @@ class WallServiceTest {
         assertEquals(
             Post(
                 id = 1,
-                ownerId = 3,
-                fromId = 4,
-                createdBy = 5,
-                date = 7890123,
-                text = "Третий пост",
+                ownerId = 2,
+                fromId = 3,
+                createdBy = 4,
+                date = 123456,
+                text = "Какой-то пост",
                 replyOwnerId = 5,
                 replyPostId = 6,
                 friendsOnly = true,
@@ -53,13 +54,12 @@ class WallServiceTest {
                 markedAsAds = false,
                 isFavorite = true,
                 postponedId = 8,
-                comments = Comments(
-                    count = 1, canPost = true, groupsCanPost = true, canClose = false,
-                    canOpen = true
-                ),
+                comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
                 likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-                reposts = Reposts(count = 6, userReposted = null)
-            ), result
+                reposts = Reposts(count = 6, userReposted = null),
+                attachment = null
+            ),
+            result
         )
     }
 
@@ -89,7 +89,8 @@ class WallServiceTest {
                 postponedId = 8,
                 comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
                 likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-                reposts = Reposts(count = 6, userReposted = null)
+                reposts = Reposts(count = 6, userReposted = null),
+                attachment = null
             )
         )
 
@@ -114,7 +115,8 @@ class WallServiceTest {
                 postponedId = 8,
                 comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
                 likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-                reposts = Reposts(count = 6, userReposted = null)
+                reposts = Reposts(count = 6, userReposted = null),
+                attachment = null
             )
         )
 
@@ -139,7 +141,8 @@ class WallServiceTest {
                 postponedId = 8,
                 comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
                 likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-                reposts = Reposts(count = 6, userReposted = null)
+                reposts = Reposts(count = 6, userReposted = null),
+                attachment = null
             )
         )
 
@@ -165,7 +168,8 @@ class WallServiceTest {
             postponedId = 8,
             comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
             likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-            reposts = Reposts(count = 6, userReposted = null)
+            reposts = Reposts(count = 6, userReposted = null),
+            attachment = null
         )
 
         // выполняем целевое действие
@@ -200,7 +204,8 @@ class WallServiceTest {
                 postponedId = 8,
                 comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
                 likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-                reposts = Reposts(count = 6, userReposted = null)
+                reposts = Reposts(count = 6, userReposted = null),
+                attachment = null
             )
         )
 
@@ -225,7 +230,8 @@ class WallServiceTest {
                 postponedId = 8,
                 comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
                 likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-                reposts = Reposts(count = 6, userReposted = null)
+                reposts = Reposts(count = 6, userReposted = null),
+                attachment = null
             )
         )
 
@@ -250,7 +256,8 @@ class WallServiceTest {
                 postponedId = 8,
                 comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
                 likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-                reposts = Reposts(count = 6, userReposted = null)
+                reposts = Reposts(count = 6, userReposted = null),
+                attachment = null
             )
         )
 
@@ -276,7 +283,8 @@ class WallServiceTest {
             postponedId = 8,
             comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
             likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-            reposts = Reposts(count = 6, userReposted = null)
+            reposts = Reposts(count = 6, userReposted = null),
+            attachment = null
         )
 
         // выполняем целевое действие

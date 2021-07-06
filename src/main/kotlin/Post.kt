@@ -17,13 +17,14 @@ data class Post(
     val markedAsAds: Boolean,
     val isFavorite: Boolean,
     val postponedId: Int,
-    val comments: Comments,
-    val likes: Likes,
-    val reposts: Reposts
+    val comments: Comments?,
+    val likes: Likes?,
+    val reposts: Reposts?,
+    val attachment: Attachment?
 
     )
 
-class Comments(
+data class Comments(
     val count: Int, //количество комментариев.//
     val canPost: Boolean, // информация о том, может ли текущий пользователь комментировать запись
     val groupsCanPost: Boolean, //информация о том, могут ли сообщества комментировать запись
@@ -31,14 +32,14 @@ class Comments(
     val canOpen: Boolean //может ли текущий пользователь открыть комментарии к записи.
 )
 
-class Likes(
+data class Likes(
     val count: Int, //число пользователей, которым понравилась запись
     val userLikes: Boolean, // наличие отметки «Мне нравится» от текущего пользователя
     val canLike: Boolean, // информация о том, может ли текущий пользователь поставить отметку «Мне нравится»
     val canPublish: Boolean // информация о том, может ли текущий пользователь сделать репост записи
 )
 
-class Reposts(
+data class Reposts(
     val count: Int, // число пользователей, скопировавших запись
     val userReposted: Post?  // есть ли оригинальный пост, null - если пост оригинальный
 ) {

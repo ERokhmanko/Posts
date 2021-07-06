@@ -21,7 +21,8 @@ fun main() {
         postponedId = 8,
         comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
         likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-        reposts = Reposts(count = 6, userReposted = null)
+        reposts = Reposts(count = 6, userReposted = null),
+        attachment = null
     )
 
     val post2 = Post(
@@ -44,8 +45,20 @@ fun main() {
         postponedId = 8,
         comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
         likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-        reposts = Reposts(count = 6, userReposted = post)
+        reposts = Reposts(count = 6, userReposted = post),
+        attachment = null
     )
+
+    val video = Video(id = 1, data = 2L, title = "какое-то крутое видео", description = "бла бла бла", duration = 222)
+    val video2 = Video(2, 3L, "ахахах, лол, смотреть всем",description = "бла бла бла", duration = 345)
+
+    val videoAttachment = VideoAttachment(video = video)
+    val videoAttachment2 = VideoAttachment(video = video2)
+
+    val attachments = Attachments()
+
+    attachments.add(videoAttachment)
+    attachments.add(videoAttachment2)
 
     val post3 = Post(
         ownerId = 3,
@@ -67,7 +80,8 @@ fun main() {
         postponedId = 8,
         comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
         likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
-        reposts = Reposts(count = 6, userReposted = null)
+        reposts = Reposts(count = 6, userReposted = null),
+        attachment = Attachments().add(videoAttachment)
     )
     val service = WallService()
 
@@ -77,19 +91,10 @@ fun main() {
 
     println(service.update(addPost))
     println(service.isRepost(addPost2))
+    println(service.isRepost(addPost3))
 
     service.printPost()
 
-    val video = Video(id = 1, data = 2L, title = "какое-то крутое видео", description = "бла бла бла", duration = 222)
-    val video2 = Video(2, 3L, "ахахах, лол, смотреть всем",description = "бла бла бла", duration = 345)
-
-    val videoAttachment = VideoAttachment(video = video)
-    val videoAttachment2 = VideoAttachment(video = video2)
-
-    val attachments = Attachments()
-
-    attachments.add(videoAttachment)
-    attachments.add(videoAttachment2)
     attachments.printAttachments()
 
 }
