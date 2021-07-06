@@ -22,7 +22,15 @@ data class Post(
     val reposts: Reposts?,
     val attachment: Attachment?
 
-    )
+)
+
+data class Comment(
+    val ownerId: Int, //идентификатор пользователя или сообщества, на чьей стене находится запись, к которой необходимо добавить комментарий.
+    val postId: Int, //идентификатор записи на стене.
+    val fromGroup: Int, //идентификатор сообщества, от имени которого публикуется комментарий. По умолчанию: 0.
+    val message: String,//текст комментария. Обязательный параметр, если не передан параметр attachments.
+)
+
 
 data class Comments(
     val count: Int, //количество комментариев.//
