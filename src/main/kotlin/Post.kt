@@ -25,6 +25,7 @@ data class Post(
 )
 
 data class Comment(
+    val id: Int, // идентификатор комментария
     val ownerId: Int, //идентификатор пользователя или сообщества, на чьей стене находится запись, к которой необходимо добавить комментарий.
     val postId: Int, //идентификатор записи на стене.
     val fromGroup: Int, //идентификатор сообщества, от имени которого публикуется комментарий. По умолчанию: 0.
@@ -55,6 +56,14 @@ data class Reposts(
         return "Reposts(count=$count, userReposted=$userReposted)"
     }
 }
+
+data class Report(
+    val ownerId: Int, //идентификатор пользователя или сообщества, которому принадлежит комментарий.
+    val commentId: Int, //идентификатор комментария.
+    val reason: Int //причина жалобы от 0 до 8
+)
+
+
 
 
 

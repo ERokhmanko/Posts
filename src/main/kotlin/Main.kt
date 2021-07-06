@@ -89,9 +89,14 @@ fun main() {
     val addPost2 = service.add(post2)
     val addPost3 = service.add(post3)
 
-    val comment = Comment(ownerId = 1, postId = 7, fromGroup = 1, message = "бла бла")
+    val comment = Comment(id = 1, ownerId = 1, postId = 2, fromGroup = 1, message = "бла бла")
+    val comment2 = Comment(id = 2, ownerId = 1, postId = 2, fromGroup = 1, message = "бла бла")
 
     service.createComment(comment)
+    service.createComment(comment2)
+
+    val report = Report(ownerId = 1, commentId = 2, reason = 7)
+    service.reportComment(report)
 
     println(service.update(addPost))
     println(service.isRepost(addPost2))
@@ -100,5 +105,7 @@ fun main() {
     service.printPost()
 
     attachments.printAttachments()
+
+
 
 }
