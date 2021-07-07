@@ -1,7 +1,6 @@
 import org.junit.Test
 
 import org.junit.Assert.*
-import org.junit.jupiter.api.Assertions
 
 class WallServiceTest {
 
@@ -292,5 +291,111 @@ class WallServiceTest {
 
         // проверяем результат (используйте assertTrue или assertFalse)
         assertFalse(result)
+    }
+
+    @Test(expected = PostNotFoundException::class)
+    fun shouldThrowPost() {
+        val post = Post(
+            ownerId = 2,
+            fromId = 3,
+            createdBy = 4,
+            date = 123456,
+            text = "Какой-то пост",
+            replyOwnerId = 5,
+            replyPostId = 6,
+            friendsOnly = true,
+            postType = "reply",
+            signerId = 7,
+            canPin = true,
+            canDelete = true,
+            canEdit = false,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = true,
+            postponedId = 8,
+            comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
+            likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
+            reposts = Reposts(count = 6, userReposted = null),
+            attachment = null
+        )
+
+        val service = WallService()
+        service.add(post)
+
+        val comment = Comment(id = 1, ownerId = 1, postId = 7, fromGroup = 1, message = "бла бла")
+
+        service.createComment(comment)
+    }
+
+    @Test(expected = ReportNotFoundException::class)
+    fun shouldThrowReport() {
+        val post = Post(
+            ownerId = 2,
+            fromId = 3,
+            createdBy = 4,
+            date = 123456,
+            text = "Какой-то пост",
+            replyOwnerId = 5,
+            replyPostId = 6,
+            friendsOnly = true,
+            postType = "reply",
+            signerId = 7,
+            canPin = true,
+            canDelete = true,
+            canEdit = false,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = true,
+            postponedId = 8,
+            comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
+            likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
+            reposts = Reposts(count = 6, userReposted = null),
+            attachment = null
+        )
+
+        val service = WallService()
+        service.add(post)
+
+        val comment = Comment(id = 1, ownerId = 1, postId = 1, fromGroup = 1, message = "бла бла")
+        service.createComment(comment)
+
+        val report = Report(ownerId = 1, commentId = 1, reason = 9)
+        service.reportComment(report)
+    }
+
+    @Test(expected = CommentNotFoundException::class)
+    fun shouldThrowComment() {
+        val post = Post(
+            ownerId = 2,
+            fromId = 3,
+            createdBy = 4,
+            date = 123456,
+            text = "Какой-то пост",
+            replyOwnerId = 5,
+            replyPostId = 6,
+            friendsOnly = true,
+            postType = "reply",
+            signerId = 7,
+            canPin = true,
+            canDelete = true,
+            canEdit = false,
+            isPinned = false,
+            markedAsAds = false,
+            isFavorite = true,
+            postponedId = 8,
+            comments = Comments(count = 1, canPost = true, groupsCanPost = true, canClose = false, canOpen = true),
+            likes = Likes(count = 6, userLikes = true, canLike = true, canPublish = true),
+            reposts = Reposts(count = 6, userReposted = null),
+            attachment = null
+        )
+
+        val service = WallService()
+        service.add(post)
+
+        val comment = Comment(id = 1, ownerId = 1, postId = 1, fromGroup = 1, message = "бла бла")
+        service.createComment(comment)
+
+        val report = Report(ownerId = 1, commentId = 2, reason = 7)
+        service.reportComment(report)
     }
 }
