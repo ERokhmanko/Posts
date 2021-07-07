@@ -16,62 +16,23 @@ class Attachments {
     }
 }
 
-class Video (val id: Int, val data: Long, val title: String, val description: String, val duration: Int) {
-    override fun toString(): String {
-        return "Video(id=$id, data=$data, title='$title', description='$description', duration=$duration)"
-    }
-}
+data class Video (val id: Int, val data: Long, val title: String, val description: String, val duration: Int)
 
-class VideoAttachment(override val type: String = "video", val video: Video) : Attachment {
-    override fun toString(): String {
-        return "VideoAttachment(type='$type', video=$video)"
-    }
-}
+data class VideoAttachment(override val type: String = "video", val video: Video) : Attachment
 
-class Audio (val id: Int, val ownerId: Int, val artist: String, val title: String, val duration: Int) {
-    override fun toString(): String {
-        return "Audio(id=$id, ownerId=$ownerId, artist='$artist', title='$title', duration=$duration)"
-    }
-}
+data class Audio (val id: Int, val ownerId: Int, val artist: String, val title: String, val duration: Int)
 
-class AudioAttachment(override val type: String = "audio", val audio: Audio) : Attachment{
-    override fun toString(): String {
-        return "AudioAttachment(type='$type', audio=$audio)"
-    }
-}
+data class AudioAttachment(override val type: String = "audio", val audio: Audio) : Attachment
 
-class Photo (val id: Int, val albumId: Int, val ownerId: Int, val text: String, val date: Long){
-    override fun toString(): String {
-        return "Photo(id=$id, albumId=$albumId, ownerId=$ownerId, text='$text', date=$date)"
-    }
-}
+data class Photo (val id: Int, val albumId: Int, val ownerId: Int, val text: String, val date: Long)
 
-class PhotoAttachment (override val type: String = "photo", val photo: Photo) : Attachment {
-    override fun toString(): String {
-        return "PhotoAttachment(type='$type', photo=$photo)"
-    }
-}
+data class PhotoAttachment (override val type: String = "photo", val photo: Photo) : Attachment
 
-class Document(val id: Int, val ownerId: Int, val title: String, val size: Int, val ext: String,
-               val url: String, val date: Long){
-    override fun toString(): String {
-        return "Document(id=$id, ownerId=$ownerId, title='$title', size=$size, ext='$ext', url='$url', date=$date)"
-    }
-}
+data class Document(val id: Int, val ownerId: Int, val title: String, val size: Int, val ext: String,
+               val url: String, val date: Long)
 
-class DocumentAttachment(override val type: String = "document", val document: Document) : Attachment{
-    override fun toString(): String {
-        return "DocumentAttachment(type='$type')"
-    }
-}
+data class DocumentAttachment(override val type: String = "document", val document: Document) : Attachment
 
-class Sticker(val productId: Int, val stickerId: Int, val animationUrl: String, val isAllowed: Boolean){
-    override fun toString(): String {
-        return "Sticker(productId=$productId, stickerId=$stickerId, animationUrl='$animationUrl', isAllowed=$isAllowed)"
-    }
-}
-class StickerAttachment(override val type: String = "sticker", val sticker: Sticker) : Attachment{
-    override fun toString(): String {
-        return "StickerAttachment(type='$type', sticker=$sticker)"
-    }
-}
+data class Sticker(val productId: Int, val stickerId: Int, val animationUrl: String, val isAllowed: Boolean)
+
+data class StickerAttachment(override val type: String = "sticker", val sticker: Sticker) : Attachment
